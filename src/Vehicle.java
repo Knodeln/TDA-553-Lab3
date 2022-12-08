@@ -10,7 +10,6 @@ abstract class Vehicle implements Movable{
    
 
     private boolean isEngineOn;
-
     private double x;
     private double y;
 
@@ -84,7 +83,7 @@ abstract class Vehicle implements Movable{
 
     // TODO fix this method according to lab pm
     public void gas(double amount){
-        if (amount <= 1 && amount >= 0){
+        if (amount <= 1 && amount >= 0 && isEngineOn){
             this.incrementSpeed(amount);
         }
         else{
