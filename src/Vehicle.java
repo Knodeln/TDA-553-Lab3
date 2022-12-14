@@ -7,6 +7,7 @@ abstract class Vehicle implements Movable{
     private double currentSpeed;
     private Color color;
     private String modelName;
+    private Point position;
    
 
     private boolean isEngineOn;
@@ -29,6 +30,7 @@ abstract class Vehicle implements Movable{
         this.isEngineOn = false;
         this.x = 0;
         this.y = 0;
+        this.position = new Point();
     }
     public boolean isEngineOn() {
         return isEngineOn;
@@ -101,17 +103,17 @@ abstract class Vehicle implements Movable{
         }
     }
 
-    public double getX() {
-        return x;
+    public int getX() {
+        return this.position.x;
     }
-    public double getY() {
-        return y;
+    public int getY() {
+        return this.position.y;
     }
-    public void setX(double x) {
-        this.x = x;
+    public void setX(int x) {
+        this.position.x = x;
     }
-    public void setY(double y) {
-        this.y = y;
+    public void setY(int y) {
+        this.position.y = y;
     }
 
 
@@ -131,9 +133,9 @@ abstract class Vehicle implements Movable{
 
     public void move(){
         if(this.isEngineOn() == true){
-        double new_x = getX() + currentSpeed * directionList[index][0];
+        int new_x = getX() + (int) Math.round(currentSpeed) * directionList[index][0];
         this.setX(new_x);
-        double new_y = getY() + currentSpeed * directionList[index][1];
+        int new_y = getY() + (int) Math.round(currentSpeed) * directionList[index][1];
         this.setY(new_y);
         }
     }

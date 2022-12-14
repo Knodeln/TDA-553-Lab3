@@ -19,7 +19,7 @@ public class DrawPanel extends JPanel{
     Point volvoPoint = new Point();
     Point saabPoint = new Point();
     Point scaniaPoint = new Point();
-
+    ArrayList<Vehicle> cars = new ArrayList<>();
 
     // TODO: Make this genereal for all cars
     void moveVolvo(int x, int y){
@@ -68,8 +68,8 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null);
-        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
-        g.drawImage(scaniaImage, scaniaPoint.x, scaniaPoint.y, null); // see javadoc for more info on the parameters
+        for (Vehicle car : cars) {
+            g.drawImage(volvoImage, car.getX(), car.getY(), null);
+        }       // see javadoc for more info on the parameters
     }
 }
