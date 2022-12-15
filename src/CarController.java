@@ -22,7 +22,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    static ArrayList<Vehicle> cars = new ArrayList<>();
+    static ArrayList<Vehicle> vehicles = new ArrayList<>();
 
     // methods:
 
@@ -30,17 +30,17 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240());
+        cc.vehicles.add(new Volvo240());
         Saab95 carTwo = new Saab95();
         Scania truck = new Scania();
         carTwo.setY(100);
         truck.setY(200);
-        cc.cars.add(carTwo);
-        cc.cars.add(truck);
+        cc.vehicles.add(carTwo);
+        cc.vehicles.add(truck);
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
-        cc.frame.drawPanel.cars = cars;
+        cc.frame.drawPanel.vehicles = vehicles;
         // Start the timer
         cc.timer.start();
     }
@@ -51,7 +51,7 @@ public class CarController {
      */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Vehicle car : cars) {
+            for (Vehicle car : vehicles) {
                 car.move();        
             }
                 // repaint() calls the paintComponent method of the panel
@@ -63,21 +63,21 @@ public class CarController {
     // Calls the gas method for each car once
     void gas(int amount) {
         double gas = ((double) amount) / 100;
-        for (Vehicle car : cars) {
+        for (Vehicle car : vehicles) {
             car.gas(gas);
         }
     }
 
     // Calls the startengine method for each car once
     void startAllCars() {
-        for (Vehicle car : cars) {
+        for (Vehicle car : vehicles) {
             car.startEngine();
         }
     }
 
     void brake(int amount) {
         double brake = ((double) amount) / 100;
-        for (Vehicle car : cars) {
+        for (Vehicle car : vehicles) {
             car.brake(brake);
         }
     }

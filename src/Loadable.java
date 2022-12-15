@@ -21,7 +21,7 @@ public class Loadable {
         }
         
 
-    public void unloadLatestCar(double xPos, double yPos){
+    public void unloadLatestCar(int xPos, int yPos){
         if(loadedCars.size() > 0){
             Car carToUnload = loadedCars.get(loadedCars.size() - 1);
             int index = loadedCars.size() - 1;

@@ -1,11 +1,11 @@
+import java.awt.*;
+
 public class CarRepairShop {
   Loadable loadedCars;
-  private double x;
-  private double y;
+private Point position;
 
   public CarRepairShop(double xPos, double yPos) {
-    x = xPos;
-    y = yPos;
+    position = new Point();
     loadedCars = new Loadable(6);
   }
   
@@ -14,12 +14,12 @@ public class CarRepairShop {
   // return loadedCars.size();
   // }
 
-  public double getX() {
-    return x;
+  public int getX() {
+    return position.x;
   }
 
-  public double getY() {
-    return y;
+  public int getY() {
+    return position.y;
   }
 
   public void loadCar(Car car) {

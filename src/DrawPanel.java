@@ -15,29 +15,10 @@ public class DrawPanel extends JPanel{
     BufferedImage volvoImage;
     BufferedImage saabImage;
     BufferedImage scaniaImage;
-    // To keep track of a singel cars position
-    Point volvoPoint = new Point();
-    Point saabPoint = new Point();
-    Point scaniaPoint = new Point();
-    ArrayList<Vehicle> cars = new ArrayList<>();
-
-    // TODO: Make this genereal for all cars
-    void moveVolvo(int x, int y){
-        volvoPoint.x = x;
-        volvoPoint.y = y;
-
-    }
-    void moveScania(int x, int y) {
-        scaniaPoint.x = x;
-        scaniaPoint.y = y;
-
-    }
+    BufferedImage standardImage;
     
-    void moveSaab(int x, int y) {
-        saabPoint.x = x;
-        saabPoint.y = y;
-    }
-
+    // To keep track of a singel cars position
+    ArrayList<Vehicle> vehicles = new ArrayList<>();
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
@@ -55,6 +36,7 @@ public class DrawPanel extends JPanel{
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
             saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
             scaniaImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Scania.jpg"));
+            standardImage = new BufferedImage(64,64,BufferedImage.TYPE_INT_RGB);
         } catch (IOException ex)
         
         {
@@ -68,8 +50,20 @@ public class DrawPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        for (Vehicle car : cars) {
-            g.drawImage(volvoImage, car.getX(), car.getY(), null);
-        }       // see javadoc for more info on the parameters
-    }
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle instanceof Volvo240) {
+                g.drawImage(volvoImage, vehicle.getX(), vehicle.getY(), null);
+            }
+            else if (vehicle instanceof Scania) {
+                g.drawImage(scaniaImage, vehicle.getX(), vehicle.getY(), null);
+            }
+            else if (vehicle instanceof Saab95) {
+                g.drawImage(saabImage, vehicle.getX(), vehicle.getY(), null);
+            }
+            else
+                g.drawImage(standardImage, vehicle.getX(), vehicle.getY(), null);
+            
+        }
+    }       // see javadoc for more info on the parameters
 }
+

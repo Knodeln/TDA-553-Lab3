@@ -27,7 +27,7 @@ public class Volvo240Test {
     testCar.startEngine();
 
     double speed_before_brake = 1;
-    testCar.incrementSpeed(1);
+    testCar.gas(1);
     testCar.brake(1);
     double speed_after_brake = testCar.getCurrentSpeed();
     assertTrue(speed_after_brake < speed_before_brake);
@@ -50,7 +50,7 @@ public class Volvo240Test {
   public void car_can_turn_right_and_move_different_directions_when_engine_on(){
     testCar.turnRight();
     testCar.startEngine();
-    testCar.incrementSpeed(1);
+    testCar.gas(1);
     testCar.move();
 
     assertTrue(testCar.getY() < testCar.getX());
@@ -59,21 +59,21 @@ public class Volvo240Test {
   public void car_can_turn_left_and_move_different_directions_when_engine_on(){
     testCar.turnLeft();
     testCar.startEngine();
-    testCar.incrementSpeed(1);
+    testCar.gas(1);
     testCar.move();
 
     assertTrue(testCar.getY() > testCar.getX());
   }
   @Test
   public void car_can_not_move_if_engine_is_off(){
-    testCar.incrementSpeed(1);
+    testCar.gas(1);
     testCar.move();
     assertTrue(testCar.getY() == testCar.getX());
   }
   @Test
   public void car_can_move_if_engine_is_on(){
     testCar.startEngine();
-    testCar.incrementSpeed(1);
+    testCar.gas(1);
     testCar.move();
     assertTrue(testCar.getY() != testCar.getX());
   }
@@ -113,10 +113,8 @@ public class Volvo240Test {
 }
     @Test
     public void speedfactor_gives_expected_speed_from_1_movement_increment(){
-      double expected_output = 1.25;
-      testCar.incrementSpeed(1);
+      double expected_output = 0.01;
+      testCar.gas(1);
       assertTrue(expected_output == testCar.getCurrentSpeed());
-    }
- 
-    
+    }  
 }

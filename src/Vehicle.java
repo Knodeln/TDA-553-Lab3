@@ -1,6 +1,5 @@
 import java.awt.*;
 
-
 abstract class Vehicle implements Movable{
     private int nrDoors;
     private double enginePower;
@@ -10,9 +9,7 @@ abstract class Vehicle implements Movable{
     private Point position;
    
 
-    private boolean isEngineOn;
-    private double x;
-    private double y;
+    protected boolean isEngineOn;
 
     private int[][] directionList = {{0,1},{1,0},{0,-1},{-1,0}};
     private int index = 0;
@@ -28,8 +25,6 @@ abstract class Vehicle implements Movable{
         this.color = color;
         this.modelName = modelName;
         this.isEngineOn = false;
-        this.x = 0;
-        this.y = 0;
         this.position = new Point();
     }
     public boolean isEngineOn() {
@@ -69,14 +64,14 @@ abstract class Vehicle implements Movable{
         this.isEngineOn = false;
     }
     
-    public void incrementSpeed(double amount){
+    private void incrementSpeed(double amount){
         this.currentSpeed = this.getCurrentSpeed() + this.speedFactor() * amount;
         if (this.currentSpeed > this.getEnginePower()){
             this.currentSpeed = this.getEnginePower();
         }
     }
 
-    public void decrementSpeed(double amount){
+    private void decrementSpeed(double amount){
         this.currentSpeed = this.getCurrentSpeed() - this.speedFactor() * amount;
         if (this.currentSpeed < 0){
             this.currentSpeed = 0;
@@ -88,7 +83,7 @@ abstract class Vehicle implements Movable{
         if (amount <= 1 && amount >= 0 && isEngineOn){
             this.incrementSpeed(amount);
         }
-        else{
+        else if (isEngineOn){
             throw new IllegalArgumentException("Amount should be in the range 0-1.");
         }
     }
@@ -140,8 +135,3 @@ abstract class Vehicle implements Movable{
         }
     }
 }
-
-
-
-
-

@@ -6,7 +6,6 @@ public class Cartransporter extends TruckWithFlatbed{
 
     public Cartransporter(){
         super(2,70, Color.yellow, "Cartransporter");
-            flatbedFastened = true;
             loadedCars = new Loadable(6);
             cartransporterFlatbed = new FlatbedWithRamp();
         }
