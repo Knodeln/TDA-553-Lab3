@@ -1,3 +1,3 @@
-# laboration-2
+# laboration-3
 
 Se Canvas för instruktioner.

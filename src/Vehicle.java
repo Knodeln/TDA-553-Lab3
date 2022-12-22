@@ -50,10 +50,7 @@ abstract class Vehicle implements Movable{
     public void setColor(Color clr){
 	    color = clr;
     }
-    public void setCurrentSpeed(double newSpeed) {
-        if (newSpeed <= enginePower && newSpeed >= 0)
-        this.currentSpeed = newSpeed;
-    }
+
     public double speedFactor(){
         return enginePower * 0.01;
     }
@@ -80,10 +77,10 @@ abstract class Vehicle implements Movable{
 
     // TODO fix this method according to lab pm
     public void gas(double amount){
-        if (amount <= 1 && amount >= 0 && isEngineOn){
+        if (amount <= 1 && amount >= 0 && isEngineOn()){
             this.incrementSpeed(amount);
         }
-        else if (isEngineOn){
+        else if (isEngineOn()){
             throw new IllegalArgumentException("Amount should be in the range 0-1.");
         }
     }
